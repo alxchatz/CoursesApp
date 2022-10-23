@@ -1,1 +1,1 @@
-# CoursesApp
+# CoursesApp written in C#
