@@ -1,0 +1,10 @@
+﻿@page
+@model CoursesApp.Pages.Courses.DeleteModel
+@{
+}
+
+<h2>Update Course</h2>
+@if (!string.IsNullOrWhiteSpace(Model.errorMessage))
+{
+            <h2><strong>@Model.errorMessage</strong></h2>
+}
