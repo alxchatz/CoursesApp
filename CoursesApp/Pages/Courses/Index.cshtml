@@ -1,0 +1,29 @@
+﻿@page
+@model CoursesApp.Pages.Courses.IndexModel
+@{
+}
+
+<h2>List of Courses</h2>
+<a class="btn btn-primary btn-sm" href="/Courses/Create">New Course</a>
+
+<table class="table">
+
+    <thead>
+        <tr><th>ID</th><th>Description</th><th>Teacher</th></tr>
+    </thead>
+
+    <tbody>
+        @if (Model.courses is not null) {
+            @foreach (var course in Model.courses)
+            {
+                <tr>
+                    <td>@course.Id</td>
+                    <td>@course.Description</td>
+                    <td>@course.TeacherFullName</td>
+                    <td><a class="btn btn-primary btn-sm" href="/Courses/Update?id=@course.Id">Update</a>
+                        <a class="btn btn-primary btn-sm" href="/Courses/Delete?id=@course.Id">Delete</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
