@@ -1,0 +1,11 @@
+﻿@page
+@model CoursesApp.Pages.StudentCourses.DeleteModel
+@{
+    ViewData["Title"] = "Delete Student - Course";
+}
+
+<h2>Delete Student - Course</h2>
+@if (!string.IsNullOrWhiteSpace(Model.errorMessage))
+{
+            <h2><strong>@Model.errorMessage</strong></h2>
+}

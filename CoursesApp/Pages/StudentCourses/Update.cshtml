@@ -1,0 +1,38 @@
+﻿@page
+@model CoursesApp.Pages.StudentCourses.UpdateModel
+@{
+    ViewData["Title"] = "Update StudentCourse";
+}
+
+<h2>Update StudentCourse</h2>
+@if (!string.IsNullOrWhiteSpace(Model.errorMessage))
+{
+        <h2><strong>@Model.errorMessage</strong></h2>
+}
+
+<form method="post">
+
+    <div class="row mb-3">
+        <label for="firstname" class="col-md-1 col-form-label">Firstname:</label>
+        <div>
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter Firstname" 
+            value=@Model.studentCourseDTO.StudentId />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="lastname" class="col-md-1 col-form-label">Lastname:</label>
+        <div>
+            <input type="text" class="form-control" name="courseid" id="courseid" placeholder="Enter Lastname"
+            value=@Model.studentCourseDTO.CourseId />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-md-1 col-md-11 text-end">
+            <button type="submit" class="btn btn-primary btn-success">Submit</button>
+            <a role="button" class="btn btn-primary btn-dark" href="/StudentCourses/Index">Cancel</a>
+        </div>
+    </div>
+
+</form>
