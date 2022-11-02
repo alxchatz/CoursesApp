@@ -1,11 +1,15 @@
-﻿using CoursesApp.DTO;
+﻿using CoursesApp.DAO.StudentCourseDAO;
+using CoursesApp.DTO;
+using CoursesApp.Model;
+using CoursesApp.Service;
 
 namespace CoursesApp.Validator
 {
     public class Validator
     {
+
         //No instances of this class should be available.
-        private Validator() { }
+        private Validator() {}
 
         public static string ValidateStudent(StudentDTO? studentDTO)
         {
@@ -57,9 +61,19 @@ namespace CoursesApp.Validator
 
         public static string ValidateStudentCourse(StudentCourseDTO? studentCourseDTO)
         {
+            IStudentCourseDAO studentCourseDAO = new StudentCourseDAOImpl();
+            IStudentCourseService studentCourseService = new StudentCourseServiceImpl(studentCourseDAO);
+
             if (studentCourseDTO is null || studentCourseDTO.StudentId is null || studentCourseDTO.CourseId is null)
             {
                 return "Something is null";
+            }
+
+            StudentCourse_Joined? studentCourse = studentCourseService.GetStudentCourse((int)studentCourseDTO.StudentId, (int)studentCourseDTO.CourseId);
+
+            if (studentCourse is not null && studentCourse.StudentId is not null)
+            {
+                return "Combination already exists";
             }
 
             return String.Empty;
