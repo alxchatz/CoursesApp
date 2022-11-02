@@ -8,8 +8,8 @@ namespace CoursesApp.DAO.CourseDAO
         void Insert(Course? Course);
         void Update(Course? Course);
         Course? Delete(Course? Course);
-        Course? GetCourse(int id);
-        List<Course> GetAll();
+        Course_Joined? GetCourse(int id);
+        List<Course_Joined> GetAll();
 
     }
 }
