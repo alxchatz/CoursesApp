@@ -28,7 +28,7 @@
                     <td>
                         <div class="text-end">
                             <a class="btn btn-primary btn-sm btn-dark" href="/Students/Update?id=@student.Id">Update</a>
-                            <a class="btn btn-primary btn-sm btn-danger" href="/Students/Delete?id=@student.Id">Delete</a>
+                            <a class="btn btn-primary btn-sm btn-danger" href="/Students/Delete?id=@student.Id" onclick="return confirm('Delete Student?');">Delete</a>
                         </div>
                     </td>
                 </tr>

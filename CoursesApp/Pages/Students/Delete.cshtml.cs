@@ -5,6 +5,7 @@ using CoursesApp.DAO;
 using CoursesApp.DTO;
 using CoursesApp.Model;
 using CoursesApp.Service;
+using System.Data.SqlClient;
 
 namespace CoursesApp.Pages.Students
 {
@@ -36,7 +37,14 @@ namespace CoursesApp.Pages.Students
             }
             catch (Exception e)
             {
-                errorMessage = e.Message;
+                if (e.GetBaseException() is SqlException && e.Message.ToLower().Contains("conflict"))
+                {
+                    errorMessage = "Unable to Delete. Related entries exist.";
+                }
+                else
+                {
+                    errorMessage = e.Message;
+                }
                 return;
             }
 

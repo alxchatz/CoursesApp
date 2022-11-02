@@ -4,8 +4,8 @@
     ViewData["Title"] = "Delete Student";
 }
 
-<h2>Update Student</h2>
+<h2>Delete Student</h2>
 @if (!string.IsNullOrWhiteSpace(Model.errorMessage))
 {
-            <h2><strong>@Model.errorMessage</strong></h2>
+            <p class="text-danger font-weight-bold">@Model.errorMessage</p>
 }
