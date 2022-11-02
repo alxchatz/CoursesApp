@@ -156,8 +156,8 @@ namespace CoursesApp.DAO.StudentCourseDAO
 
                 using SqlCommand sqlCommand = new SqlCommand(sqlStr, conn);
 
-                sqlCommand.Parameters.AddWithValue("@STUDENTID", studentCourse.StudentId);
-                sqlCommand.Parameters.AddWithValue("@COURSEID", studentCourse.CourseId);
+                sqlCommand.Parameters.AddWithValue("@STUDENTID", studentId);
+                sqlCommand.Parameters.AddWithValue("@COURSEID", courseId);
 
                 using SqlDataReader reader = sqlCommand.ExecuteReader();
 
