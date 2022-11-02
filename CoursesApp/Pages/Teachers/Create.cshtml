@@ -6,7 +6,7 @@
 
 <h2>New Teacher</h2>
 @if (!string.IsNullOrWhiteSpace(Model.errorMessage)) {
-    <h2><strong>@Model.errorMessage</strong></h2>
+    <p class="text-danger font-weight-bold">@Model.errorMessage</p>
 }
 
 <form method="post">

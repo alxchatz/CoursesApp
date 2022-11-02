@@ -29,7 +29,7 @@
                     <td>
                         <div class="text-end">
                             <a class="btn btn-primary btn-sm btn-dark" href="/Teachers/Update?id=@teacher.Id">Update</a>
-                            <a class="btn btn-primary btn-sm btn-danger" href="/Teachers/Delete?id=@teacher.Id">Delete</a>
+                            <a class="btn btn-primary btn-sm btn-danger" href="/Teachers/Delete?id=@teacher.Id" onclick="return confirm('Delete Teacher?');">Delete</a>
                         </div>
                     </td>
                 </tr>
