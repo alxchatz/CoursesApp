@@ -31,7 +31,7 @@ namespace CoursesApp.Service
             }
         }
 
-        public List<Course> GetAllCourses()
+        public List<Course_Joined> GetAllCourses()
         {
             try
             {
@@ -40,11 +40,11 @@ namespace CoursesApp.Service
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new List<Course>();
+                return new List<Course_Joined>();
             }
         }
 
-        public Course? GetCourse(int id)
+        public Course_Joined? GetCourse(int id)
         {
             try
             {

@@ -6,11 +6,11 @@ namespace CoursesApp.Service
     public interface ICourseService
     {
 
-        List<Course> GetAllCourses();
+        List<Course_Joined> GetAllCourses();
         void InsertCourse(CourseDTO courseDTO);
         void UpdateCourse(CourseDTO courseDTO);
         Course? DeleteCourse(CourseDTO courseDTO);
-        Course? GetCourse(int id);
+        Course_Joined? GetCourse(int id);
 
     }
 }
