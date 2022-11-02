@@ -55,5 +55,15 @@ namespace CoursesApp.Validator
             return String.Empty;
         }
 
+        public static string ValidateStudentCourse(StudentCourseDTO? studentCourseDTO)
+        {
+            if (studentCourseDTO is null || studentCourseDTO.StudentId is null || studentCourseDTO.CourseId is null)
+            {
+                return "Something is null";
+            }
+
+            return String.Empty;
+        }
+
     }
 }
