@@ -36,9 +36,9 @@ namespace CoursesApp.DAO.CourseDAO
 
         }
 
-        public List<Course> GetAll()
+        public List<Course_Joined> GetAll()
         {
-            List<Course> Courses = new List<Course>();
+            List<Course_Joined> courses = new List<Course_Joined>();
             try
             {
 
@@ -58,7 +58,7 @@ namespace CoursesApp.DAO.CourseDAO
 
                 while (reader.Read())
                 {
-                    Course Course = new Course()
+                    Course_Joined course = new Course_Joined()
                     {
                         Id = reader.GetInt32(0),
                         Description = reader.GetString(1),
@@ -66,10 +66,10 @@ namespace CoursesApp.DAO.CourseDAO
                         TeacherFullName = reader.GetString(3)
                     };
 
-                    Courses.Add(Course);
+                    courses.Add(course);
                 }
 
-                return Courses;
+                return courses;
             }
             catch (Exception e)
             {
@@ -78,19 +78,24 @@ namespace CoursesApp.DAO.CourseDAO
             }
         }
 
-        public Course? GetCourse(int id)
+        public Course_Joined? GetCourse(int id)
         {
             try
             {
-                Course? Course = new();
+                Course_Joined? course = new();
 
                 using SqlConnection? conn = DBHelper.GetConnection();
 
                 if (conn is not null) conn.Open();
 
-                string sqlText = "SELECT * FROM COURSES WHERE ID = @ID";
+                string sqlStr = "SELECT COURSES.*," +
+                                "       TEACHERS.FIRSTNAME + ' ' + TEACHERS.LASTNAME AS TEACHERFULLNAME " +
+                                "FROM COURSES " +
+                                "LEFT OUTER JOIN TEACHERS ON" +
+                                "   COURSES.TEACHER_ID = TEACHERS.ID " +
+                                "WHERE COURSES.ID = @ID";
 
-                using SqlCommand sqlCommand = new SqlCommand(sqlText, conn);
+                using SqlCommand sqlCommand = new SqlCommand(sqlStr, conn);
 
                 sqlCommand.Parameters.AddWithValue("@ID", id);
 
@@ -98,7 +103,7 @@ namespace CoursesApp.DAO.CourseDAO
 
                 if (reader.Read())
                 {
-                    Course = new Course()
+                    course = new Course_Joined()
                     {
                         Id = reader.GetInt32(0),
                         Description = reader.GetString(1),
@@ -107,7 +112,7 @@ namespace CoursesApp.DAO.CourseDAO
 
                 }
 
-                return Course;
+                return course;
 
             }
             catch (Exception e)

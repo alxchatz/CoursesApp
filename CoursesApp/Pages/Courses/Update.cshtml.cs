@@ -35,7 +35,7 @@ namespace CoursesApp.Pages.Courses
             try
             {
                 Course? course;
-                int id = int.Parse(Request.Query["Id"]);
+                int id = int.Parse(Request.Query["id"]);
 
                 course = courseService.GetCourse(id);
                 if (course is not null) courseDTO = ExtractCourseDTO(course);
@@ -63,7 +63,12 @@ namespace CoursesApp.Pages.Courses
             //Validate
             errorMessage = ValidateCourse(courseDTO);
 
-            if (!string.IsNullOrWhiteSpace(errorMessage)) return;
+            if (!string.IsNullOrWhiteSpace(errorMessage)) 
+            {
+                List<Teacher> teachers = teacherService.GetAllTeachers();
+                teachersList = teachers.Select(x => new SelectListItem { Text = x.Firstname + " " + x.Lastname, Value = x.Id.ToString() }).ToList();
+                return; 
+            }
 
             try
             {

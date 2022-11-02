@@ -13,7 +13,7 @@ namespace CoursesApp.Pages.Courses
         private readonly ICourseDAO courseDAO = new CourseDAOImpl();
         private readonly ICourseService courseService;
 
-        internal List<Course> courses = new();
+        internal List<Course_Joined> courses = new();
 
         public IndexModel()
         {

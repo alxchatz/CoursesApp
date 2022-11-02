@@ -1,15 +1,21 @@
 ﻿@page
 @model CoursesApp.Pages.Courses.IndexModel
 @{
+    ViewData["Title"] = "Courses";
 }
 
 <h2>List of Courses</h2>
-<a class="btn btn-primary btn-sm" href="/Courses/Create">New Course</a>
+<a class="btn btn-primary btn-sm btn-dark" href="/Courses/Create">New Course</a>
 
 <table class="table">
 
     <thead>
-        <tr><th>ID</th><th>Description</th><th>Teacher</th></tr>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Teacher</th>
+            <th></th>
+        </tr>
     </thead>
 
     <tbody>
@@ -20,8 +26,12 @@
                     <td>@course.Id</td>
                     <td>@course.Description</td>
                     <td>@course.TeacherFullName</td>
-                    <td><a class="btn btn-primary btn-sm" href="/Courses/Update?id=@course.Id">Update</a>
-                        <a class="btn btn-primary btn-sm" href="/Courses/Delete?id=@course.Id">Delete</a></td>
+                    <td>
+                        <div class="text-end">
+                            <a class="btn btn-primary btn-sm btn-dark" href="/Courses/Update?id=@course.Id">Update</a>
+                            <a class="btn btn-primary btn-sm btn-danger" href="/Courses/Delete?id=@course.Id" onclick="return confirm('Delete Course?');">Delete</a>
+                        </div>
+                    </td>
                 </tr>
             }
         }

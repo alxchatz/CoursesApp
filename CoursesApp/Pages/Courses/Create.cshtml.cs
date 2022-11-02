@@ -42,7 +42,12 @@ namespace CoursesApp.Pages.Courses
 
             errorMessage = ValidateCourse(courseDTO);
 
-            if (!string.IsNullOrWhiteSpace(errorMessage)) return;
+            if (!string.IsNullOrWhiteSpace(errorMessage)) 
+            {
+                List<Teacher> teachers = teacherService.GetAllTeachers();
+                teachersList = teachers.Select(x => new SelectListItem { Text = x.Firstname + " " + x.Lastname, Value = x.Id.ToString() }).ToList();
+                return;
+            }
 
             try
             {

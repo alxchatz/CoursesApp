@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CoursesApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 topnav">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">CoursesApp</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,16 +21,39 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index" title="Home"><i class="fa fa-fw fa-home"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Students/Index">Students</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Students</a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/Students/Index">List of Students</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/Students/Create">New Student</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Teachers/Index">Teachers</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Teachers</a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/Teachers/Index">List of Teachers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/Teachers/Create">New Teacher</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Courses/Index">Courses</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Courses</a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/Courses/Index">List of Courses</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/Courses/Create">New Course</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Student - Courses</a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/StudentCourses/Index">List of Student - Courses</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="nav-link text-light dropdown-item" asp-area="" asp-page="/StudentCourses/Create">New Student - Course</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

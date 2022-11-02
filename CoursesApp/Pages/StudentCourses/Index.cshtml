@@ -1,0 +1,42 @@
+﻿@page
+@model CoursesApp.Pages.StudentCourses.IndexModel
+@{
+    ViewData["Title"] = "Student - Courses";
+}
+
+<h2>List of StudentCourses</h2>
+<a class="btn btn-primary btn-sm btn-dark" href="/StudentCourses/Create">New Student - Course</a>
+
+<table class="table table-striped">
+
+    <thead class="thead-light">
+        <tr>
+            <th>StudentID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>CourseID</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.studentCourses is not null) {
+            @foreach(var studentCourse in Model.studentCourses) {
+                <tr>
+                    <td>@studentCourse.StudentId</td>
+                    <td>@studentCourse.StudentFirstname</td>
+                    <td>@studentCourse.StudentLastName</td>
+                    <td>@studentCourse.CourseId</td>
+                    <td>@studentCourse.CourseDescription</td>
+                    <td>
+                        <div class="text-end">
+                            <a class="btn btn-primary btn-sm btn-dark" href="/StudentCourses/Update?studentId=@studentCourse.StudentId&courseId=@studentCourse.CourseId">Update</a>
+                            <a class="btn btn-primary btn-sm btn-danger" href="/StudentCourses/Delete?studentId=@studentCourse.StudentId&courseId=@studentCourse.CourseId" onclick="return confirm('Delete Student Course relation?');">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
