@@ -6,7 +6,7 @@
 
 <h2>New Course</h2>
 @if (!string.IsNullOrWhiteSpace(Model.errorMessage)) {
-    <h2><strong>@Model.errorMessage</strong></h2>
+    <p class="text-danger font-weight-bold">@Model.errorMessage</p>
 }
 
 <form method="post">
@@ -23,7 +23,7 @@
         <label for="teacherid" class="col-md-1 col-form-label">Teacher:</label>
         <div>
             <select class="form-select" name="teacherid" id="teacherid" value=@Model.courseDTO.TeacherId>
-                <option disabled selected>- Select Teacher -</option>
+                <option disabled selected hidden>- Select Teacher -</option>
                 @if (Model.teachersList is not null) {
                     @foreach (var teacher in Model.teachersList) {
                         <option value="@teacher.Value">@teacher.Text</option>
