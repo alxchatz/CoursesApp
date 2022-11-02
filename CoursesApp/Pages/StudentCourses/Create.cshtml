@@ -4,26 +4,42 @@
     ViewData["Title"] = "New Student - Course";
 }
 
-<h2>New StudentCourse</h2>
+<h2>New Student - Course</h2>
 @if (!string.IsNullOrWhiteSpace(Model.errorMessage)) {
-    <h2><strong>@Model.errorMessage</strong></h2>
+    <p class="text-danger font-weight-bold">@Model.errorMessage</p>
 }
 
 <form method="post">
 
     <div class="row mb-3">
-        <label for="firstname" class="col-md-1 col-form-label">Firstname:</label>
+        <label for="studentid" class="col-md-1 col-form-label">Student:</label>
         <div>
-            <input type="text" class="form-control" name="studentid" id="studentid" placeholder="Enter Firstname" 
-            value=@Model.studentCourseDTO.StudentId />
+            <select class="form-select" name="studentid" id="studentid" value=@Model.studentCourseDTO.StudentId>
+                <option disabled selected hidden>- Select Student -</option>
+                @if (Model.studentsList is not null)
+                {
+                    @foreach (var student in Model.studentsList)
+                    {
+                        <option value="@student.Value">@student.Text</option>
+                    }
+                }
+            </select>
         </div>
     </div>
 
     <div class="row mb-3">
-        <label for="lastname" class="col-md-1 col-form-label">Lastname:</label>
+        <label for="courseid" class="col-md-1 col-form-label">Course:</label>
         <div>
-            <input type="text" class="form-control" name="courseid" id="courseid" placeholder="Enter Lastname"
-                   value=@Model.studentCourseDTO.CourseId />
+            <select class="form-select" name="courseid" id="courseid" value=@Model.studentCourseDTO.CourseId>
+                <option disabled selected hidden>- Select Course -</option>
+                @if (Model.coursesList is not null)
+                {
+                    @foreach (var course in Model.coursesList)
+                    {
+                        <option value="@course.Value">@course.Text</option>
+                    }
+                }
+            </select>
         </div>
     </div>
 

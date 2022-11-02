@@ -16,6 +16,7 @@
             <th>Lastname</th>
             <th>CourseID</th>
             <th>Description</th>
+            <th></th>
         </tr>
     </thead>
 
@@ -31,7 +32,7 @@
                     <td>
                         <div class="text-end">
                             <a class="btn btn-primary btn-sm btn-dark" href="/StudentCourses/Update?studentId=@studentCourse.StudentId&courseId=@studentCourse.CourseId">Update</a>
-                            <a class="btn btn-primary btn-sm btn-danger" href="/StudentCourses/Delete?studentId=@studentCourse.StudentId&courseId=@studentCourse.CourseId">Delete</a>
+                            <a class="btn btn-primary btn-sm btn-danger" href="/StudentCourses/Delete?studentId=@studentCourse.StudentId&courseId=@studentCourse.CourseId" onclick="return confirm('Delete Student Course relation?');">Delete</a>
                         </div>
                     </td>
                 </tr>
